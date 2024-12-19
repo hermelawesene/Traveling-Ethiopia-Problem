@@ -12,7 +12,7 @@ roads = {
     'Mekelle': [('Gondar', 300)]
 }
 
-# Build Graph
+# Build Graph  
 def build_graph(roads):
     G = nx.Graph()
     for city, connections in roads.items():
