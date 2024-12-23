@@ -1,8 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-from queue import PriorityQueue, Queue, LifoQueue
 
-# Data
+# Cities we have asked to visualize 
 cities = ['Addis Ababa', 'Bahir Dar', 'Gondar', 'Hawassa', 'Mekelle']
 roads = {
     'Addis Ababa': [('Bahir Dar', 510), ('Hawassa', 275)],
@@ -20,11 +19,21 @@ def build_graph(roads):
             G.add_edge(city, connected_city, weight=distance)
     return G
 
-
 # Main
 G = build_graph(roads)
-start_city = 'Addis Ababa'
-goal_city = 'Mekelle'
-nx.draw_spring(G, with_lables = True)
-#G.add_edge(edge_list)
+# start_city = 'Addis Ababa'
+# goal_city = 'Mekelle'
+
+# Get the positions of the nodes using a circular layout
+pos = nx.circular_layout(G)  # Use circular layout for symmetry
+# Draw the graph with labels
+nx.draw(G, pos, with_labels=True, node_size=3000, node_color='skyblue', font_size=10, font_weight='bold', edge_color='gray')
+
+
+# Add edge labels (distances)
+edge_labels = nx.get_edge_attributes(G, 'weight')
+nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=10, font_color='red')
+
+
+
 plt.show()
