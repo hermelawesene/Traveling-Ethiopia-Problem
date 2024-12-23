@@ -23,6 +23,12 @@ for city, connections in roads.items():
     for connected_city, distance in connections:
         G.add_edge(city, connected_city, weight=distance)
 
+# Add edge labels (distances)
+edge_list = nx.get_edge_attributes(G, 'weight')
+
 # Step 4: Visualize the graph
 nx.draw(G, with_labels=True, node_size=3000, node_color='lightblue', font_size=12, font_weight='bold')
+plt.show()
+nx.draw_spring(G, with_lables = True, )
+G.add_edge(edge_list)
 plt.show()
