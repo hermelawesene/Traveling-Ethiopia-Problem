@@ -23,12 +23,14 @@ for city, connections in roads.items():
     for connected_city, distance in connections:
         G.add_edge(city, connected_city, weight=distance)
 
-# Add edge labels (distances)
-edge_list = nx.get_edge_attributes(G, 'weight')
-
 # Step 4: Visualize the graph
-nx.draw(G, with_labels=True, node_size=3000, node_color='lightblue', font_size=12, font_weight='bold')
-plt.show()
-nx.draw_spring(G, with_lables = True, )
-G.add_edge(edge_list)
+# Draw the graph with nodes and labels
+pos = nx.spring_layout(G)  # You can experiment with different layouts (e.g., spring_layout, circular_layout, etc.)
+nx.draw(G, pos, with_labels=True, node_size=3000, node_color='lightblue', font_size=12, font_weight='bold')
+
+# Add edge labels (distances) to the graph
+edge_labels = nx.get_edge_attributes(G, 'weight')
+nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=10, font_color='red')
+
+# Display the plot
 plt.show()
