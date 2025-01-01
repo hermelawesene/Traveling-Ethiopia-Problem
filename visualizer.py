@@ -1,6 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
+# this is just for visualizing the cities with there perspective distance
 # Cities we have asked to visualize 
 cities = ['Addis Ababa', 'Bahir Dar', 'Gondar', 'Hawassa', 'Mekelle']
 roads = {
@@ -10,8 +11,7 @@ roads = {
     'Hawassa': [('Addis Ababa', 275)],
     'Mekelle': [('Gondar', 300)]
 }
-
-# Build Graph  
+ 
 def build_graph(roads):
     G = nx.Graph()
     for city, connections in roads.items():
@@ -19,7 +19,7 @@ def build_graph(roads):
             G.add_edge(city, connected_city, weight=distance)
     return G
 
-# Main
+
 G = build_graph(roads)
 # start_city = 'Addis Ababa'
 # goal_city = 'Mekelle'
