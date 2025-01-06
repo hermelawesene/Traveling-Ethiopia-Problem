@@ -21,19 +21,11 @@ def build_graph(roads):
 
 
 G = build_graph(roads)
-# start_city = 'Addis Ababa'
-# goal_city = 'Mekelle'
 
-# Get the positions of the nodes using a circular layout
-pos = nx.circular_layout(G)  # Use circular layout for symmetry
-# Draw the graph with labels
+pos = nx.circular_layout(G)  
 nx.draw(G, pos, with_labels=True, node_size=3000, node_color='skyblue', font_size=10, font_weight='bold', edge_color='gray')
 
-
-# Add edge labels (distances)
 edge_labels = nx.get_edge_attributes(G, 'weight')
 nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=10, font_color='red')
-
-
 
 plt.show()
